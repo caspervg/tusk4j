@@ -8,7 +8,7 @@ Installation is easy using the Maven Central Repository. Just add the following 
   ...
   <dependency>
       <groupId>net.caspervg.tusk4j</groupId>
-      <artifactId>LEX4J</artifactId>
+      <artifactId>tusk4j</artifactId>
       <version>0.1-RELEASE</version>
   </dependency>
   ...
