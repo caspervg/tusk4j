@@ -6,7 +6,7 @@
 
     <groupId>net.caspervg.tusk4j</groupId>
     <artifactId>tusk4j</artifactId>
-    <version>0.1-RELEASE</version>
+    <version>0.2-RELEASE</version>
 
     <name>Tusk4J</name>
     <description>A library that be used to send requests to the Tusk API and communicate with other clients</description>

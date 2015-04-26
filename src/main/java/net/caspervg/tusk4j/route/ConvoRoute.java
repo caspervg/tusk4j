@@ -17,11 +17,19 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.logging.Level;
 
+/**
+ * Provides endpoints related to Tusk conversations
+ */
 public class ConvoRoute {
 
     private Auth auth;
     private Gson gson = new Gson();
 
+    /**
+     * Creates a new ConvoRoute with an authentication
+     * @param auth Authentication to use for future requests (cannot be null)
+     * @see Auth
+     */
     public ConvoRoute(Auth auth) {
         if (auth == null) {
             throw new IllegalArgumentException("Authentication cannot be null");
@@ -30,14 +38,36 @@ public class ConvoRoute {
         this.auth = auth;
     }
 
+    /**
+     * Sets an authentication to use for the ConvoRoute
+     * @param auth Authentication to use for future requests
+     * @see Auth
+     */
     public void setAuth(Auth auth) {
         this.auth = auth;
     }
 
+    /**
+     * Creates a new conversation with given title and list of participants
+     *
+     * @param title Title of the new conversation
+     * @param participants List of participants
+     * @return the result returned by the Tusk API
+     * @see CreateConvoResult
+     * @see ConvoInput
+     */
     public CreateConvoResult createConvo(String title, List<String> participants) {
         return createConvo(new ConvoInput(title, participants));
     }
 
+    /**
+     * Creates a new conversation with given title and list of participants. Authentication is required.
+     *
+     * @param convo Conversation information for the new conversation
+     * @return the result returned by the Tusk API
+     * @see CreateConvoResult
+     * @see ConvoInput
+     */
     public CreateConvoResult createConvo(ConvoInput convo) {
         if (auth == null) {
             throw new IllegalArgumentException("Authentication cannot be null");
@@ -56,6 +86,13 @@ public class ConvoRoute {
         }
     }
 
+    /**
+     * Retrieves a list of all conversations that the user has access to. Authentication is required.
+     *
+     * @return list of conversations as returned by the Tusk API
+     * @see BasicConversation
+     * @see List
+     */
     public List<BasicConversation> getConvos() {
         if (auth == null) {
             throw new IllegalArgumentException("Authentication cannot be null");
@@ -72,6 +109,12 @@ public class ConvoRoute {
         }
     }
 
+    /**
+     * Retrieves a single conversation. Authentication is required.
+     *
+     * @return the result returned by the Tusk API
+     * @see GetConvoResult
+     */
     public GetConvoResult getConvo(String id) {
         if (auth == null) {
             throw new IllegalArgumentException("Authentication cannot be null");
