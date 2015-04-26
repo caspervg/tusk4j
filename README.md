@@ -19,4 +19,4 @@ Installation is easy using the Maven Central Repository. Just add the following 
 ### API Documentation
 Information and examples of the REST API this library is based on can be found on [Tusk's SwaggerUI page](https://www.pielambr.be/swagger). This API is still in early development, so the Tusk4J API may also change quite rapidly as Tusk evolves. 
 
-Javadoc is available at https://caspervg.net/public/tusk4j
+Javadoc is available at https://caspervg.net/public/tusk4j.
