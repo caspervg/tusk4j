@@ -1,9 +1,11 @@
 package net.caspervg.tusk4j.route;
 
-public enum Route {
+enum Route {
 
     REGISTER("/user"),
     SESSION("/session"),
+    FRIENDS("/user/friends"),
+    FRIEND_REQUEST("/user/%s/friends"),
     CONVERSATION("/conversation"),
     CONVERSATION_ONE("/conversation/%s");
 

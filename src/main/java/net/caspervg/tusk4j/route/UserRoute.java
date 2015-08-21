@@ -4,11 +4,9 @@ import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import net.caspervg.tusk4j.bean.input.ConvoInput;
-import net.caspervg.tusk4j.bean.result.CreateConvoResult;
+import net.caspervg.tusk4j.bean.input.UserInput;
 import net.caspervg.tusk4j.bean.result.RegistrationResult;
 import net.caspervg.tusk4j.bean.result.SessionResult;
-import net.caspervg.tusk4j.bean.input.UserInput;
 import net.caspervg.tusk4j.log.Tusk4JLogger;
 
 import java.util.logging.Level;

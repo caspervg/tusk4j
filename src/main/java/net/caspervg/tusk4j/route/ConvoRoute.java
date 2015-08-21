@@ -6,7 +6,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import net.caspervg.tusk4j.auth.Auth;
 import net.caspervg.tusk4j.bean.BasicConversation;
-import net.caspervg.tusk4j.bean.Conversation;
 import net.caspervg.tusk4j.bean.input.ConvoInput;
 import net.caspervg.tusk4j.bean.result.CreateConvoResult;
 import net.caspervg.tusk4j.bean.result.GetConvoResult;
@@ -25,8 +24,13 @@ public class ConvoRoute {
     private Auth auth;
     private Gson gson = new Gson();
 
+    private ConvoRoute() {
+        // Authentication is required
+    }
+
     /**
      * Creates a new ConvoRoute with an authentication
+     *
      * @param auth Authentication to use for future requests (cannot be null)
      * @see Auth
      */
@@ -35,15 +39,6 @@ public class ConvoRoute {
             throw new IllegalArgumentException("Authentication cannot be null");
         }
 
-        this.auth = auth;
-    }
-
-    /**
-     * Sets an authentication to use for the ConvoRoute
-     * @param auth Authentication to use for future requests
-     * @see Auth
-     */
-    public void setAuth(Auth auth) {
         this.auth = auth;
     }
 
@@ -69,10 +64,6 @@ public class ConvoRoute {
      * @see ConvoInput
      */
     public CreateConvoResult createConvo(ConvoInput convo) {
-        if (auth == null) {
-            throw new IllegalArgumentException("Authentication cannot be null");
-        }
-
         try {
             HttpResponse<String> response = Unirest.post(Route.CONVERSATION.url())
                     .header("content-type", "application/json")
@@ -94,10 +85,6 @@ public class ConvoRoute {
      * @see List
      */
     public List<BasicConversation> getConvos() {
-        if (auth == null) {
-            throw new IllegalArgumentException("Authentication cannot be null");
-        }
-
         try {
             HttpResponse<String> response = Unirest.get(Route.CONVERSATION.url())
                     .basicAuth(auth.getUsername(), auth.getSession())
@@ -116,10 +103,6 @@ public class ConvoRoute {
      * @see GetConvoResult
      */
     public GetConvoResult getConvo(String id) {
-        if (auth == null) {
-            throw new IllegalArgumentException("Authentication cannot be null");
-        }
-
         try {
             HttpResponse<String> response = Unirest.get(Route.CONVERSATION_ONE.url(id))
                     .basicAuth(auth.getUsername(), auth.getSession())
